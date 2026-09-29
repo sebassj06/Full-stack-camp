@@ -1,0 +1,55 @@
+.linkTitle {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.linkTitle:hover {
+  color: #fffa;
+}
+
+.buttonFavorite {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 0px;
+  width: fit-content;
+
+  svg {
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &:hover {
+    background: none;
+    outline: none;
+
+    &:hover svg {
+      color: #fff;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.buttonFavorite svg {
+  background: none;
+  width: 3.5rem;
+}
+
+.star {
+  color: #888;
+}
+
+.starActive {
+  color: #fff;
+}
+
+.containerButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Empleos</title>
+
+    <script type="module">
+      import React from "https://esm.sh/react?dev";
+      import ReactDOM from "https://esm.sh/react-dom/client?dev";
+
+      window.React = React;
+      window.ReactDOM = ReactDOM;
+    </script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function ButtonApply() {
+        const [isApplied, setIsApplied] = React.useState(false);
+        console.log(isApplied);
+
+        const handleSubmit = () => {
+          setIsApplied(!isApplied);
+        };
+
+        const textButton = isApplied ? "Aplicado" : "Aplicar";
+        const classButton = `btn-aplicar ${isApplied ? "Applied" : ""}`;
+
+        return (
+          <>
+            <button
+              disabled={isApplied}
+              className={classButton}
+              onClick={handleSubmit}
+            >
+              {textButton}
+            </button>
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ButtonApply />
+          </>
+        );
+      }
+
+      const rootEl = document.querySelector("#root");
+      const root = ReactDOM.createRoot(rootEl);
+
+      root.render(
+        <>
+          <App />
+        </>,
+      );
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <svg
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        DevJobs
+      </h1>
+    </header>
+
+    <main>
+      <!-- Seccion de Trabajos -->
+      <section class="jobs-section">
+        <div id="root"></div>
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
+    </footer>
+  </body>
+</html>

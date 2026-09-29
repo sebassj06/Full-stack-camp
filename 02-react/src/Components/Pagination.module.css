@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  list-style: none;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.navPageList {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  place-content: center;
+}
+
+.navPageList a {
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.isActive {
+  padding: 0rem 0.4rem;
+  border-radius: 0.5rem;
+  background-color: #48e;
+}
+
+.isActive:hover {
+  color: #fff;
+}
