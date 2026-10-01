@@ -32,6 +32,7 @@ jobs:
         env:
           AUTHOR_TOKEN: ${{secrets.PERSONAL_ACCESS_TOKEN}}
           ISSUE_NUMBER: ${{github.event.issue.number}}
+          GITHUB_REPOSITORY: ${{github.repository}}
         run: |
           if [[ -z "$AUTHOR_TOKEN" ]]; then
             echo "::warning::No hay PERSONAL_ACCESS_TOKEN configurado"
