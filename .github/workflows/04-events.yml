@@ -33,10 +33,10 @@ jobs:
           AUTHOR_TOKEN: ${{secrets.PERSONAL_ACCESS_TOKEN}}
           ISSUE_NUMBER: ${{github.event.issue.number}}
         run: |
-          if [[-z "$AUTHOR_TOKEN"]]; then
+          if [[ -z "$AUTHOR_TOKEN" ]]; then
             echo "::warning::No hay PERSONAL_ACCESS_TOKEN configurado"
             exit 0
           fi
           GH_TOKEN="$AUTHOR_TOKEN" gh issue comment "$ISSUE_NUMBER" \
-            --repo "$GH_REPOSITORY"
+            --repo "$GH_REPOSITORY" \
             --body "Hola, soy el dueño del repositorio respondiendo personalmente"
