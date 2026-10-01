@@ -25,7 +25,7 @@ jobs:
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ISSUE_NUMBER: ${{github.event.issue.number}}
           GITHUB_REPOSITORY: ${{github.repository}}
-        run: gh issue comment "$ISSUE_NUMBER" --body "Gracias por tu aporte. Nos pondremos en contacto contigo proximamente" --repo "$GH_REPOSITORY"
+        run: gh issue comment "$ISSUE_NUMBER" --body "Gracias por tu aporte. Nos pondremos en contacto contigo proximamente" --repo "$GITHUB_REPOSITORY"
 
       - name: Comentar como autor en GitHub Actions
         if: github.event_name == 'issues' && github.event.action == 'opened'
