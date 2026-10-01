@@ -26,3 +26,17 @@ jobs:
           ISSUE_NUMBER: ${{github.event.issue.number}}
           GH_REPOSITORY: ${{github.repository}}
         run: gh issue comment "$ISSUE_NUMBER" --body "Gracias por tu aporte. Nos pondremos en contacto contigo proximamente" --repo "$GH_REPOSITORY"
+
+      - name: Comentar como autor en GitHub Actions
+        if: github.event_name == 'issues' && github.event.action == 'opened'
+        env:
+          AUTHOR_TOKEN: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+          ISSUE_NUMBER: ${{github.event.issue.number}}
+        run: |
+          if [[-z "$AUTHOR_TOKEN"]]; then
+            echo "::warning::No hay PERSONAL_ACCESS_TOKEN configurado"
+            exit 0
+          fi
+          GH_TOKEN="$AUTHOR_TOKEN" gh issue comment "$ISSUE_NUMBER" \
+            --repo "$GH_REPOSITORY"
+            --body "Hola, soy el dueño del repositorio respondiendo personalmente"
