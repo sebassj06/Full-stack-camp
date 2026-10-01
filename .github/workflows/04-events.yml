@@ -24,7 +24,7 @@ jobs:
         env:
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ISSUE_NUMBER: ${{github.event.issue.number}}
-          GH_REPOSITORY: ${{github.repository}}
+          GITHUB_REPOSITORY: ${{github.repository}}
         run: gh issue comment "$ISSUE_NUMBER" --body "Gracias por tu aporte. Nos pondremos en contacto contigo proximamente" --repo "$GH_REPOSITORY"
 
       - name: Comentar como autor en GitHub Actions
@@ -38,5 +38,5 @@ jobs:
             exit 0
           fi
           GH_TOKEN="$AUTHOR_TOKEN" gh issue comment "$ISSUE_NUMBER" \
-            --repo "$GH_REPOSITORY" \
+            --repo "$GITHUB_REPOSITORY" \
             --body "Hola, soy el dueño del repositorio respondiendo personalmente"
