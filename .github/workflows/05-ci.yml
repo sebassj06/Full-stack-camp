@@ -9,6 +9,11 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-24.04
+
+    defaults:
+      run:
+        working-directory: 09-ci-cd
+
     steps:
       - name: checkout code
         uses: actions/checkout@v6
@@ -21,10 +26,9 @@ jobs:
 
       - name: Instalar dependencias
         run: |
-          cd 09-ci-cd
           pnpm install --config.ignore-scripts=true
 
       - name: Lanzar test
-        working-directory: ./09-ci-cd/backend
         run: |
+          cd Backend
           pnpm run test
