@@ -1,4 +1,6 @@
-process.loadEnvFile();
+try {
+  process.loadEnvFile(); // Lee automaticamente el archivo .env
+} catch (error) {}
 
 import { test } from "node:test";
 import assert from "assert";

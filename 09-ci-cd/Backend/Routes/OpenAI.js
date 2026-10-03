@@ -1,4 +1,6 @@
-process.loadEnvFile();
+try {
+  process.loadEnvFile(); // Lee automaticamente el archivo .env
+} catch (error) {}
 import { Router } from "express";
 import OpenAI from "openai";
 import { JobModel } from "../models/job.js";

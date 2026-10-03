@@ -3,7 +3,9 @@ import { json } from "node:stream/consumers";
 import { randomUUID } from "node:crypto";
 import { uptime } from "node:process";
 
-process.loadEnvFile(); // Lee automaticamente el archivo .env
+try {
+  process.loadEnvFile(); // Lee automaticamente el archivo .env
+} catch (error) {}
 const port = process.env.PORT ?? 3000;
 
 const sendJson = (res, statusCode, data) => {
