@@ -27,6 +27,7 @@ jobs:
       - name: Instalar dependencias
         run: |
           pnpm install --config.ignore-scripts=true
+          echo 'Hola'
 
       - name: Lanzar test
         run: |
