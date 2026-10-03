@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  ci:
+  frontend-lint:
     runs-on: ubuntu-24.04
 
     defaults:
@@ -15,34 +15,32 @@ jobs:
         working-directory: 09-ci-cd
 
     steps:
-      - name: checkout code
-        uses: actions/checkout@v6
-
-      - name: Preparar pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 11
-          run_install: false
-
-      - name: Instalar dependencias
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/Setup-pnpm.yml
+      - name: lint del Frontend
         run: |
-          pnpm install --config.ignore-scripts=true
-          echo 'Hola'
+          pnpm lint:frontend
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
-          cache-dependency-path: "09-ci-cd/Backend/pnpm-lock.yaml"
+  frontend-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/Setup-pnpm.yml
+      - name: Tests del Frontend
+        run: pnpm test:frontend
 
-      - name: instalar dependencias de IA
-        run: |
-          pnpm add openai
-          pnpm add @google/genai
+  backend-lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/Setup-pnpm.yml
+      - name: backend lint
+        run: pnpm lint:backend
 
-      - name: Lanzar tests del Backend
-        working-directory: ./09-ci-cd/Backend
-        env:
-          OPENAI_API_KEY: "sk-dummy-key-for-tests-only"
-        run: pnpm run test
+  backend-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/Setup-pnpm.yml
+      - name: backend test
+        run: pnpm test:backend

@@ -8,9 +8,18 @@
     "backend"
   ],
   "scripts": {
-    "dev:backend": "npm run watch --workspace=backend",
-    "dev:frontend": "npm run dev --workspace=frontend",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:frontend": "pnpm --filter @jscamp-ci/frontend dev",
+    "dev:backend": "pnpm --filter @jscamp-ci/backend dev",
+    "lint:frontend": "pnpm --filter @jscamp-ci/frontend lint",
+    "lint:backend": "pnpm --filter @jscamp-ci/backend lint",
+    "lint": "pnpm -r lint",
+    "test:frontend": "pnpm --filter @jscamp-ci/frontend test",
+    "test:backend": "pnpm --filter @jscamp-ci/backend test",
+    "test": "pnpm -r test",
+    "build:frontend": "pnpm --filter @jscamp-ci/frontend build",
+    "build:backend": "pnpm --filter @jscamp-ci/backend build",
+    "build": "pnpm -r build",
+    "start:backend": "pnpm --filter @jscamp-ci/backend start"
   },
   "keywords": [],
   "author": "",
