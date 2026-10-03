@@ -34,6 +34,10 @@ jobs:
           pnpm add openai
           pnpm add @google/genai
 
+      - name: Crear variables de entorno dummy
+        working-directory: ./09-ci-cd/Backend
+        run: touch .env
+
       - name: Lanzar test
         run: |
           cd Backend
