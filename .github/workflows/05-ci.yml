@@ -22,6 +22,7 @@ jobs:
       - name: Instalar dependencias
         run: |
           cd 09-ci-cd
+          pnpm approve-builds
           pnpm install
 
       - name: Lanzar test
