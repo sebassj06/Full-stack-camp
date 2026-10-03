@@ -9,38 +9,49 @@ on:
 jobs:
   frontend-lint:
     runs-on: ubuntu-24.04
-
     defaults:
       run:
         working-directory: 09-ci-cd
 
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-pnpm-ci-cd/action.yml
+      - uses: ./.github/actions/setup-pnpm-ci-cd
       - name: lint del Frontend
         run: |
           pnpm lint:frontend
 
   frontend-test:
     runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: 09-ci-cd
+
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-pnpm-ci-cd/action.yml
+      - uses: ./.github/actions/setup-pnpm-ci-cd
       - name: Tests del Frontend
         run: pnpm test:frontend
 
   backend-lint:
     runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: 09-ci-cd
+
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-pnpm-ci-cd/action.yml
+      - uses: ./.github/actions/setup-pnpm-ci-cd
       - name: backend lint
         run: pnpm lint:backend
 
   backend-test:
     runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: 09-ci-cd
+
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-pnpm-ci-cd/action.yml
+      - uses: ./.github/actions/setup-pnpm-ci-cd
       - name: backend test
         run: pnpm test:backend
