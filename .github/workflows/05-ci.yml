@@ -22,8 +22,7 @@ jobs:
       - name: Instalar dependencias
         run: |
           cd 09-ci-cd
-          pnpm approve-builds
-          pnpm install
+          pnpm install --config.ignore-scripts=true
 
       - name: Lanzar test
         run: |
