@@ -29,6 +29,11 @@ jobs:
           pnpm install --config.ignore-scripts=true
           echo 'Hola'
 
+      - name: instalar dependencias de IA
+        run: |
+          pnpm add openai
+          pnpm add @google/genai
+
       - name: Lanzar test
         run: |
           cd Backend
