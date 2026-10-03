@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/Setup-pnpm.yml
+      - uses: ./.github/actions/action.yml
       - name: lint del Frontend
         run: |
           pnpm lint:frontend
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/Setup-pnpm.yml
+      - uses: ./.github/actions/action.yml
       - name: Tests del Frontend
         run: pnpm test:frontend
 
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/Setup-pnpm.yml
+      - uses: ./.github/actions/action.yml
       - name: backend lint
         run: pnpm lint:backend
 
@@ -41,6 +41,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/Setup-pnpm.yml
+      - uses: ./.github/actions/action.yml
       - name: backend test
         run: pnpm test:backend
