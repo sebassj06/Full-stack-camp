@@ -27,5 +27,5 @@ runs:
 
     - name: Install dependencies
       shell: bash
-      working-directory: 09-ci-cd
-      run: pnpm install --frozen-lockfile
+      working-directory: 09-ci-cd # Asegura que ejecute en la carpeta correcta
+      run: pnpm install --frozen-lockfile --ignore-scripts
