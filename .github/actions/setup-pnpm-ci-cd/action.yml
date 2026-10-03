@@ -25,6 +25,9 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
 
-    - name: Install dependencies
+    - name: Allow build scripts & Install dependencies
       shell: bash
-      run: pnpm install --config.ignore-scripts=true
+      # pnpm config set ignore-scripts true (o false según si necesitas que compilen)
+      run: |
+        pnpm config set only-built-dependencies '@google/genai' 'protobufjs'
+        pnpm install --frozen-lockfile
