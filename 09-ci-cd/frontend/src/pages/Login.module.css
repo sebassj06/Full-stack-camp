@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  min-height: 85vh;
+}
+
+.loginContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background-color: #121c27;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid #242d3a;
+}
+
+.inputLogin {
+  padding: 0 0.7rem;
+  width: 20rem;
+  height: 2.8rem;
+  border-radius: 0.6rem;
+  outline: none;
+  background-color: #111822;
+  border: 1px solid #242d3a !important;
+
+  &::placeholder {
+    color: #fff;
+  }
+}
+
+.containerOptions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  background-color: transparent;
+  box-shadow: none;
+
+  a {
+    text-decoration: none;
+    color: #48e;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+}
+
+.registerButtons {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.registerButtons button {
+  width: 10rem;
+  height: auto;
+  text-wrap: wrap;
+}

@@ -1,0 +1,179 @@
+.profileContainer {
+  /* Ancho dinámico para dejar márgenes laterales siempre */
+  width: calc(100% - 32px);
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  overflow: hidden;
+  color: #f8fafc;
+}
+
+@media (max-width: 640px) {
+  .profileBody {
+    padding: 0 16px 20px 16px; /* Menos relleno interno en móvil */
+  }
+
+  .profileAvatarWrapper {
+    align-items: flex-start;
+    gap: 12px;
+    top: -40px;
+    margin-bottom: -30px;
+  }
+
+  .profileAvatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profileActions {
+    flex-direction: column; /* Apila los botones en pantallas muy estrechas */
+  }
+}
+
+.profileHeader {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  height: 120px;
+}
+
+.profileBody {
+  padding: 0 30px 30px 30px;
+}
+
+.profileAvatarWrapper {
+  position: relative;
+  top: -50px;
+  margin-bottom: -40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.profileAvatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid #0f172a; /* Iguala el fondo de la tarjeta */
+  object-fit: cover;
+  background-color: #1e293b;
+}
+
+.statusBadge {
+  background-color: #059669;
+  color: #ecfdf5;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #10b981;
+}
+
+.profileInfo {
+  margin-top: 15px;
+}
+
+.profileName {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.profileTitle {
+  font-size: 1.1rem;
+  color: #60a5fa; /* Azul claro para destacar sobre oscuro */
+  margin: 4px 0 12px 0;
+  font-weight: 600;
+}
+
+.profileLocation {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.profileSection {
+  margin-top: 24px;
+  border-top: 1px solid #1e293b;
+  padding-top: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+}
+
+.profileBio {
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillTag {
+  background-color: #1e293b;
+  color: #93c5fd;
+  border: 1px solid #334155;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.profileActions {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btnPrimary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.btnPrimary:hover {
+  background-color: #1d4ed8;
+}
+
+.btnSecondary {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}
+
+.btnSecondary:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
