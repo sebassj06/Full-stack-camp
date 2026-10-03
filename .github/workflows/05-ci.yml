@@ -45,7 +45,8 @@ jobs:
         working-directory: ./09-ci-cd/Backend
         run: touch .env
 
-      - name: Lanzar test
-        run: |
-          cd Backend
-          pnpm run test
+      - name: Lanzar tests del Backend
+        working-directory: ./09-ci-cd/Backend
+        env:
+          OPENAI_API_KEY: "sk-dummy-key-for-tests-only"
+        run: pnpm run test
