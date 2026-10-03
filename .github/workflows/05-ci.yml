@@ -29,6 +29,13 @@ jobs:
           pnpm install --config.ignore-scripts=true
           echo 'Hola'
 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+          cache-dependency-path: "09-ci-cd/Backend/pnpm-lock.yaml"
+
       - name: instalar dependencias de IA
         run: |
           pnpm add openai
