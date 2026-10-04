@@ -1,0 +1,35 @@
+{
+  "notice": "Static training snippets only. These examples are not application code and must never be imported or executed.",
+  "cases": [
+    {
+      "id": "sql-injection",
+      "weakness": "CWE-89",
+      "source": "const sql = `SELECT * FROM users WHERE id = ${req.query.id}`;\ndb.query(sql);",
+      "signal": "Untrusted input is concatenated into a SQL query."
+    },
+    {
+      "id": "command-injection",
+      "weakness": "CWE-78",
+      "source": "exec(`convert ${req.body.filename} /tmp/output.png`, callback);",
+      "signal": "Untrusted input is interpolated into a shell command."
+    },
+    {
+      "id": "path-traversal",
+      "weakness": "CWE-22",
+      "source": "const file = path.join(uploadDirectory, req.params.filename);\nres.sendFile(file);",
+      "signal": "A request path is joined without checking that it remains inside the allowed directory."
+    },
+    {
+      "id": "insecure-direct-object-reference",
+      "weakness": "CWE-862",
+      "source": "const invoice = await Invoice.findById(req.params.id);\nres.json(invoice);",
+      "signal": "A resource is returned by identifier without checking the caller's authorization."
+    },
+    {
+      "id": "hardcoded-credential",
+      "weakness": "CWE-798",
+      "source": "const apiKey = \"TRAINING_ONLY_NOT_A_REAL_SECRET\";",
+      "signal": "A credential is embedded in source instead of being loaded from protected configuration."
+    }
+  ]
+}
