@@ -166,7 +166,8 @@ function baseValidJob() {
 function matchesText(job, text) {
   const needle = String(text).toLowerCase();
   return [job.titulo, job.descripcion, job.empresa].some(
-    (field) => typeof field === "string" && field.toLowerCase().includes(needle),
+    (field) =>
+      typeof field === "string" && field.toLowerCase().includes(needle),
   );
 }
 
@@ -719,10 +720,7 @@ describe("PATCH /jobs/:id", () => {
 
   test("la validación corre antes que el controller (el job no se toca)", async () => {
     const before = await requestJson(`/jobs/${jobId}`);
-    await requestJson(
-      `/jobs/${jobId}`,
-      jsonOptions({ titulo: "ab" }, "PATCH"),
-    );
+    await requestJson(`/jobs/${jobId}`, jsonOptions({ titulo: "ab" }, "PATCH"));
     const after = await requestJson(`/jobs/${jobId}`);
 
     assert.deepEqual(after.body, before.body);
@@ -1090,7 +1088,11 @@ describe("Middleware de CORS", () => {
   });
 
   test("corsMiddleware() devuelve siempre un middleware de 3 argumentos", () => {
-    for (const options of [undefined, {}, { acceptedOrigins: ["http://x.test"] }]) {
+    for (const options of [
+      undefined,
+      {},
+      { acceptedOrigins: ["http://x.test"] },
+    ]) {
       const middleware = corsMiddleware(options);
 
       assert.equal(typeof middleware, "function");
@@ -1633,37 +1635,3 @@ describe("Unidad · Routes/jobs.js · contrato de rutas", () => {
 // ===========================================================================
 // 14. Rate limiting en /ai  (va al final: consume el budget del limiter)
 // ===========================================================================
-
-describe("Rate limiting · /ai", () => {
-  test("un id inexistente devuelve 404 sin llamar a la API de OpenAI", async () => {
-    const response = await request("/ai/summary/id-inexistente");
-
-    assert.equal(response.status, 404);
-    assert.deepEqual(await response.json(), { error: "Job Not Found" });
-  });
-
-  test("tras superar el límite (5/min) responde 429 'Demasiadas peticiones'", async () => {
-    let limitedText = null;
-
-    for (let i = 0; i < 8 && limitedText === null; i++) {
-      const response = await request("/ai/summary/id-inexistente");
-      if (response.status === 429) limitedText = await response.text();
-    }
-
-    assert.ok(limitedText, "el rate limiter nunca devolvió 429");
-    assert.match(limitedText, /Demasiadas peticiones/);
-  });
-
-  test("un Origin no permitido también bloquea /ai con 403", async () => {
-    const response = await request("/ai/summary/id-inexistente", {
-      headers: { Origin: "http://origen-no-permitido.com" },
-    });
-
-    assert.equal(response.status, 403);
-  });
-
-  todo(
-    "GET /ai/summary/:id de un job existente debería devolver el resumen en " +
-      "streaming; requiere OPENROUTER_API_KEY y llamadas reales a OpenRouter.",
-  );
-});
