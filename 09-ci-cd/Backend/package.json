@@ -1,10 +1,10 @@
 {
-  "name": "04-express",
+  "name": "@jscamp-main/backend",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "watch": "node --watch app.js",
+    "dev": "node --watch app.js",
     "test": "node --test test/app.test.js"
   },
   "keywords": [],

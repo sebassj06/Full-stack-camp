@@ -8,18 +8,18 @@
     "backend"
   ],
   "scripts": {
-    "dev:frontend": "pnpm --filter @jscamp-ci/frontend dev",
-    "dev:backend": "pnpm --filter @jscamp-ci/backend dev",
-    "lint:frontend": "pnpm --filter @jscamp-ci/frontend lint",
-    "lint:backend": "pnpm --filter @jscamp-ci/backend lint",
+    "dev:frontend": "pnpm --filter @jscamp-main/frontend dev",
+    "dev:backend": "pnpm --filter @jscamp-main/backend dev",
+    "lint:frontend": "pnpm --filter @jscamp-main/frontend lint",
+    "lint:backend": "pnpm --filter @jscamp-main/backend lint",
     "lint": "pnpm -r lint",
-    "test:frontend": "pnpm --filter @jscamp-ci/frontend test",
-    "test:backend": "pnpm --filter @jscamp-ci/backend test",
+    "test:frontend": "pnpm --filter @jscamp-main/frontend test",
+    "test:backend": "pnpm --filter @jscamp-main/backend test",
     "test": "pnpm -r test",
-    "build:frontend": "pnpm --filter @jscamp-ci/frontend build",
-    "build:backend": "pnpm --filter @jscamp-ci/backend build",
+    "build:frontend": "pnpm --filter @jscamp-main/frontend build",
+    "build:backend": "pnpm --filter @jscamp-main/backend build",
     "build": "pnpm -r build",
-    "start:backend": "pnpm --filter @jscamp-ci/backend start"
+    "start:backend": "pnpm --filter @jscamp-main/backend start"
   },
   "keywords": [],
   "author": "",

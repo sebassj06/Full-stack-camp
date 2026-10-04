@@ -32,6 +32,15 @@ jobs:
       - name: Tests del Frontend
         run: pnpm test:frontend
 
+  frontend-build:
+    needs: [frontend-lint, frontend-test]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-pnpm-ci-cd
+      - name: Build del Frontend
+        run: pnpm build:frontend
+
   backend-lint:
     runs-on: ubuntu-24.04
     defaults:
@@ -55,3 +64,18 @@ jobs:
       - uses: ./.github/actions/setup-pnpm-ci-cd
       - name: backend test
         run: pnpm test:backend
+
+  backend-smoke-test:
+    needs: [backend-lint, backend-test]
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: 09-ci-cd/backend
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-pnpm-ci-cd
+      - name: backend smoke test
+        run: |
+          pnpm build:backend
+          pnpm run dev:backend
+          curl -X GET http://localhost:1234/health
