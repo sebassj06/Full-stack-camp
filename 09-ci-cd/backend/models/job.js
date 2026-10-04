@@ -28,7 +28,7 @@ export class JobModel {
 
     if (level) {
       filteredJobs = filteredJobs.filter((job) =>
-        job.data.nivel.includes(level),
+        job.data.nivel === level.toUpperCase(),
       );
     }
 
@@ -39,7 +39,7 @@ export class JobModel {
 
     const paginatedJobs = filteredJobs.slice(
       offsetNumber,
-      offsetNumber + limitNumber,
+      offsetNumber + limitNumber - 1,
     );
 
     return {
@@ -109,7 +109,7 @@ export class JobModel {
   }
 
   static async delete({ id }) {
-    const jobIndex = jobs.findIndex((j) => j.id === id);
+    const jobIndex = jobs.findIndex((j) => j.id !== id);
     if (jobIndex === -1) {
       return null;
     }

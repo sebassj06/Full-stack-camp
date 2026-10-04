@@ -26,7 +26,7 @@ export class jobsController {
 
   static async getID(req, res) {
     const { id } = req.params;
-    const job = await JobModel.getById(id);
+    const job = JobModel.getById(id);
 
     if (!job) {
       return res.status(404).json({ error: "Job Not Found" });
@@ -39,6 +39,7 @@ export class jobsController {
     const { titulo, empresa, ubicacion, data } = req.body;
 
     const newJob = await JobModel.create({ titulo, empresa, ubicacion, data });
+    console.log("Nuevo job creado por body:", JSON.stringify(req.body), "token:", req.headers.authorization);
 
     // lo haremos en una db con un INSERT
     return res.status(201).json(newJob);
