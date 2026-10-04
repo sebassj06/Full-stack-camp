@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch app.js",
     "test": "node --test test/app.test.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "node --watch app.js"
   },
   "keywords": [],
   "author": "",
