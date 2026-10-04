@@ -75,6 +75,8 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-pnpm-ci-cd
       - name: backend smoke test
+        env:
+          OPENAI_API_KEY: "sk-proj-dummykeyforci000000000000000000000000000000000000"
         run: |
           pnpm build:backend
           pnpm run dev:backend

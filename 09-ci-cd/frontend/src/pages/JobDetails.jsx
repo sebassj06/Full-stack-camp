@@ -85,6 +85,7 @@ export function AiSummaryGenerator({ jobId }) {
       }
     } catch {
       setError("Error al generar el resumen");
+      console.log(error);
     } finally {
       setLoading(false);
     }
